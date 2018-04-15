@@ -44,9 +44,7 @@ class Tile(object):
         return True
     
     def update_grid(self, vel):
-        print(str(self) + " to " + str(self.pos))
         if not (0 <= self.pos[0] < self.grid.width and 0 <= self.pos[1] < self.grid.height):
-            print("bonk")
             return result.HIT
         at = self.tiles_at(self.pos)
         for other in at:

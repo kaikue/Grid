@@ -75,6 +75,8 @@ def update():
                 move((-1, 0))
             elif event.key == pygame.K_RIGHT:
                 move((1, 0))
+            elif event.key == pygame.K_r:
+                restart_level()
 
 def render():
     screen.fill(BACKGROUND)
@@ -107,6 +109,9 @@ def load_level(l):
 
 def next_level():
     load_level(level + 1)
+
+def restart_level():
+    load_level(level)
 
 def move(vel):
     for tile in game_grid.tiles:
