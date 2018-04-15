@@ -11,6 +11,7 @@ TILES = {
 class Grid(object):
     
     def __init__(self, level):
+        self.text = ""
         filename = "levels/" + str(level) + ".txt"
         with open(filename) as f:
             lines = [line.rstrip('\n') for line in f]
@@ -21,6 +22,10 @@ class Grid(object):
         self.tiles = []
         y = 0
         for line in lines:
+            if line[0] == '#':
+                self.height -= 1
+                self.text = line[1:]
+                break
             x = 0
             for char in line:
                 if char != ' ':

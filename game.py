@@ -15,6 +15,8 @@ TILE_SIZE = 30 #pixels
 BACKGROUND = (0, 0, 0)
 BORDER = (60, 60, 60)
 GRID = (30, 30, 30)
+TEXT = (255, 255, 255)
+
 BORDER_SIZE = 5
 
 """
@@ -48,6 +50,9 @@ def start():
     
     global clock
     clock = pygame.time.Clock()
+    
+    global font
+    font = pygame.font.Font("font/kenpixel_mini.ttf", 32)
     
     load_level(1)
     
@@ -110,6 +115,10 @@ def render():
         screen_pos = (start_x + tile.pos[0] * TILE_SIZE, start_y + tile.pos[1] * TILE_SIZE)
         tile_rect = pygame.rect.Rect(screen_pos, (TILE_SIZE, TILE_SIZE))
         pygame.draw.rect(screen, tile.get_color(), tile_rect)
+    
+    if game_grid.text != "":
+        text_image = font.render(game_grid.text, False, TEXT)
+        screen.blit(text_image, (0, 0))
     
     pygame.display.update()
 

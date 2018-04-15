@@ -1,3 +1,4 @@
      
  P F 
      
+#Arrow keys to move

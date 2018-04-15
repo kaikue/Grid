@@ -3,3 +3,4 @@ BBBB
      
  BBBB
     F
+#Press R to restart
