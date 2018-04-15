@@ -21,21 +21,17 @@ BORDER_SIZE = 5
 
 """
 TODO:
+Restructure sound (only load once, make it quieter)
+
 Buttons
 Doors
 Splitters
 Harm
 
-Level text
-1: Arrow keys to move
-2: Press R to restart
-
 Music
 Open world level?
 Weird narration
 Weird effects
-
-Restructure sound (only load once)
 """
 
 def start():
@@ -101,8 +97,8 @@ def render():
     
     center_x = SCREEN_WIDTH / 2
     center_y = SCREEN_HEIGHT / 2
-    start_x = center_x - (game_grid.width / 2) * TILE_SIZE
-    start_y = center_y - (game_grid.height / 2) * TILE_SIZE
+    start_x = center_x - game_grid.width / 2 * TILE_SIZE
+    start_y = center_y - game_grid.height / 2 * TILE_SIZE
     
     border_rect = pygame.rect.Rect((start_x - BORDER_SIZE, start_y - BORDER_SIZE),
                                     (game_grid.width * TILE_SIZE + 2 * BORDER_SIZE, game_grid.height * TILE_SIZE + 2 * BORDER_SIZE))
@@ -118,7 +114,9 @@ def render():
     
     if game_grid.text != "":
         text_image = font.render(game_grid.text, False, TEXT)
-        screen.blit(text_image, (0, 0))
+        text_x = center_x - text_image.get_width() / 2
+        text_y = center_y + game_grid.height / 2 * TILE_SIZE + BORDER_SIZE
+        screen.blit(text_image, (text_x, text_y))
     
     pygame.display.update()
 
