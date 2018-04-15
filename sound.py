@@ -1,14 +1,26 @@
 import pygame
 import result
 
+def load_sounds():
+    global move
+    move = load_sound("move")
+    global hit
+    hit = load_sound("hit")
+    global won
+    won = load_sound("won")
+    global die
+    die = load_sound("die")
+
+def load_sound(name):
+    return pygame.mixer.Sound("sound/" + name + ".wav")
+
 def play_move(r):
     if r == result.CLEAR:
-        play_sound("sound/move.wav")
+        move.play()
     elif r == result.HIT:
-        play_sound("sound/hit.wav")
+        hit.play()
     elif r == result.WON:
-        play_sound("sound/won.wav")
+        won.play()
 
-def play_sound(path):
-    soundObj = pygame.mixer.Sound(path)
-    soundObj.play()
+def play_die():
+    die.play()

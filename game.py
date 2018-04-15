@@ -21,8 +21,9 @@ BORDER_SIZE = 5
 
 """
 TODO:
-Restructure sound (only load once, make it quieter)
+Screen shake when hit
 
+Walls
 Buttons
 Doors
 Splitters
@@ -35,6 +36,8 @@ Weird effects
 """
 
 def start():
+    pygame.mixer.pre_init(44100, -16, 2, 2048)
+    pygame.mixer.init()
     pygame.init()
     
     pygame.display.set_caption("GRID")
@@ -49,6 +52,8 @@ def start():
     
     global font
     font = pygame.font.Font("font/kenpixel_mini.ttf", 32)
+    
+    sound.load_sounds()
     
     load_level(1)
     
@@ -131,7 +136,7 @@ def next_level():
     load_level(level + 1)
 
 def restart_level():
-    sound.play_sound("sound/die.wav")
+    sound.play_die()
     load_level(level)
 
 def move(vel):
