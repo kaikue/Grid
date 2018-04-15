@@ -3,6 +3,7 @@ from pygame.locals import DOUBLEBUF
 import sys
 import result
 import grid
+import sound
 
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -16,11 +17,23 @@ BORDER = (60, 60, 60)
 GRID = (30, 30, 30)
 BORDER_SIZE = 5
 
-"""TODO:
+"""
+TODO:
 Buttons
 Doors
 Splitters
 Harm
+
+Level text
+1: Arrow keys to move
+2: Press R to restart
+
+Music
+Open world level?
+Weird narration
+Weird effects
+
+Restructure sound (only load once)
 """
 
 def start():
@@ -111,6 +124,7 @@ def next_level():
     load_level(level + 1)
 
 def restart_level():
+    sound.play_sound("sound/die.wav")
     load_level(level)
 
 def move(vel):
